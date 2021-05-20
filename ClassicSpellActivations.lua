@@ -128,6 +128,16 @@ function f:PLAYER_LOGIN()
                 ns.LAB_UpdateOverlayGlow(self)
             end)
         end
+		
+		local dominos_prefix = "DominosActionButton"
+		for i = 1, 51 do
+			local btn_name = dominos_prefix..i
+			local btn = _G[btn_name]
+			if btn then
+				self:RegisterForActivations(btn)
+			end
+		end
+
 
         -- if Neuron then
         --     for i,bar in ipairs(Neuron.BARIndex) do
@@ -476,7 +486,6 @@ function ns.CheckRampage(eventType, isSrcPlayer, isDstPlayer, ...)
             if isCrit == true then
                 f:Activate("Rampage", 5)
             end
-
         end
     end
 end
